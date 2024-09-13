@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
+#fastapi
 app = FastAPI()
 
 # Define the path to the HTML templates
@@ -12,6 +13,7 @@ template_path = Path(__file__).parent / "templates"
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
+# actual apis
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
     with open(template_path / "index.html") as file:
